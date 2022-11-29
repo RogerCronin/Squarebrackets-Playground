@@ -1,0 +1,89 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+div.black-bg {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+p {
+    color: #C4C4C4;
+    font-size: 1.5em;
+    font-family: "Patrick Hand", cursive;
+}
+
+div.heading {
+    text-align: center;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: #4400FE;
+    font-family: "Permanent Marker", cursive;
+    font-size: 3em;
+    margin: 0;
+}
+
+.float-l {
+    float: left;
+}
+
+.float-r {
+    float: right;
+}
+
+.offset {
+    margin: 1em;
+    background-color: transparent;
+}
+
+.offset img {
+    border-radius: 2em;
+}
+
+.offset p {
+    text-align: center;
+    color: #919191;
+    margin: 0;
+}
+
+#everything {
+    background-color: transparent;
+    width: 70%;
+}
+
+#logoDiv {
+    font-size: 2em;
+    text-align: center;
+    color: #4400FE;
+}
+
+#logoDiv h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-family: "Permanent Marker", cursive;
+}
+
+#foreground {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4em;
+    position: relative;
+    z-index: 1;
+    margin: 10vh 0;
+}
+
+#background {
+    z-index: -100;
+}
+
+#doodles img {
+    position: fixed;
+    filter: hue-rotate(200deg);
+}
