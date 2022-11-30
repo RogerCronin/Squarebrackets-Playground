@@ -27,6 +27,52 @@ h2 {
     margin: 0;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+    transition: filter 0.2s;
+}
+
+a:hover {
+    filter: brightness(60%);
+}
+
+.offset p {
+    text-align: center;
+    color: #919191;
+    margin: 0;
+}
+
+div .album {
+    width: 250px;
+    background-color: black;
+}
+
+.album img {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.album img:hover {
+    opacity: 0.2;
+}
+
+.album .albumTitle {
+    color: #C4C4C4;
+    margin: 1em 0;
+}
+
+.albumDescription {
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .float-l {
     float: left;
 }
@@ -42,12 +88,6 @@ h2 {
 
 .offset img {
     border-radius: 2em;
-}
-
-.offset p {
-    text-align: center;
-    color: #919191;
-    margin: 0;
 }
 
 #everything {
