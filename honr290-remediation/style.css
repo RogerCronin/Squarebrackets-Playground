@@ -96,9 +96,14 @@ div .album {
 }
 
 #logoDiv {
+    width: 100%;
     font-size: 2em;
     text-align: center;
     color: #4400FE;
+}
+
+#logoDiv img {
+    max-width: 69vw;
 }
 
 #logoDiv h1 {
@@ -127,4 +132,33 @@ div .album {
 #doodles img {
     position: fixed;
     filter: hue-rotate(200deg);
+}
+
+#blocker {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #everything {
+        display: none;
+    }
+
+    #background {
+        display: none;
+    }
+
+    #blocker {
+        text-align: center;
+        margin: 2em;
+        display: block;
+        position: absolute;
+        background-color: black;
+        display: flex;
+        gap: 3em;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
