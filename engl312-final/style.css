@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Knewave&display=swap');
+
+:root {
+    --black: #141414;
+    --white: #dddddd;
+}
+
+#cruncher {
+    margin: 0 auto;
+    max-width: 1500px;
+}
+
+body {
+    background-image: url("assets/paper-seamless.jpg");
+
+    font-family: "Coming Soon", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--black);
+    margin: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0;
+
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+div.row {
+    display: flex;
+    flex-direction: row;
+}
+
+div.row > *:last-child {
+    flex: 1;
+}
+
+img.polaroid {
+    max-width: 400px;
+    max-height: 400px;
+    margin: 2rem;
+    position: relative;
+    border: 2rem solid var(--white);
+    border-bottom: 6rem solid var(--white);
+    box-shadow: 0 0 1rem black;
+}
+
+img.polaroid.left-tilt {
+    transform: rotate(-1deg);
+}
+
+.index-card {
+    --red: #f0a4a4;
+    --blue: #a4aff0;
+
+    position: relative;
+    font-size: 1.5rem;
+
+    color: var(--black);
+
+    background: linear-gradient(to bottom,
+        white 0%, white 9.5%, var(--red) 9.5%, var(--red) 10%,
+        white 10%, white 19.5%, var(--blue) 19.5%, var(--blue) 20%,
+        white 20%, white 29.5%, var(--blue) 29.5%, var(--blue) 30%,
+        white 30%, white 39.5%, var(--blue) 39.5%, var(--blue) 40%,
+        white 40%, white 49.5%, var(--blue) 49.5%, var(--blue) 50%,
+        white 50%, white 59.5%, var(--blue) 59.5%, var(--blue) 60%,
+        white 60%, white 69.5%, var(--blue) 69.5%, var(--blue) 70%,
+        white 70%, white 79.5%, var(--blue) 79.5%, var(--blue) 80%,
+        white 80%, white 89.5%, var(--blue) 89.5%, var(--blue) 90%,
+        white 90%, white 100%
+    );
+
+    height: 400px;
+    width: 700px;
+    
+    padding-left: 0.5rem;
+    padding-top: 3.1rem;
+
+    line-height: 2.75rem;
+}
+
+.index-card ul {
+    margin: 0;
+}
+
+.stock {
+    --stock-brightness: 1;
+    position: relative;
+    color: var(--white);
+    margin: 1rem;
+}
+
+.stock::before {
+    content: " ";
+    background-image: url("assets/stock-seamless.jpg");
+    box-shadow: 0 0 0.5rem black;
+    filter: hue-rotate(var(--stock-rotate)) brightness(var(--stock-brightness)) url(#rough-edges);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.stock.stock-paper::before {
+    filter: saturate(0) contrast(0.5) brightness(2.4) url(#rough-edges);
+}
+
+.stock.stock-paper {
+    color: var(--black);
+}
+
+.stock-red {
+    --stock-rotate: 0deg;
+}
+
+.stock-orange {
+    --stock-rotate: 45deg;
+    --stock-brightness: 1.4;
+}
+
+.stock-yellow {
+    --stock-rotate: 70deg;
+    --stock-brightness: 1.7;
+}
+
+.stock-green {
+    --stock-rotate: 120deg;
+}
+
+.stock-blue {
+    --stock-rotate: 200deg;
+}
+
+.stock-purple {
+    --stock-rotate: 300deg;
+    --stock-brightness: 0.8;
+}
