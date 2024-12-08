@@ -38,13 +38,49 @@ p {
     margin: 0;
 }
 
+a {
+    color: var(--white);
+}
+
+.center {
+    text-align: center;
+}
+
 div.row {
     display: flex;
     flex-direction: row;
 }
 
-div.row > *:last-child {
+div.row:not(.no-fill) > *:last-child {
     flex: 1;
+}
+
+div.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+}
+
+div.singleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.padding {
+    padding: 2rem;
+}
+
+ul {
+    margin: 0;
+    list-style-type: none;
+}
+
+ul li::marker {
+    content: "-  ";
 }
 
 img.polaroid {
@@ -57,8 +93,20 @@ img.polaroid {
     box-shadow: 0 0 1rem black;
 }
 
-img.polaroid.left-tilt {
+img.polaroid.small {
+    max-width: 300px;
+    max-height: 300px;
+
+    border: 1.5rem solid var(--white);
+    border-bottom: 4.5rem solid var(--white);
+}
+
+.left-tilt {
     transform: rotate(-1deg);
+}
+
+.right-tilt {
+    transform: rotate(1deg);
 }
 
 .index-card {
@@ -90,10 +138,42 @@ img.polaroid.left-tilt {
     padding-top: 3.1rem;
 
     line-height: 2.75rem;
+    box-shadow: 0 0 1rem black;
 }
 
-.index-card ul {
-    margin: 0;
+.envelope {
+    height: 400px;
+    width: 700px;
+    background: url("assets/paper-seamless.jpg");
+    box-shadow: 0 0 1rem black;
+    position: relative;
+}
+
+.envelope > p {
+    position: absolute;
+    color: var(--black);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.envelope a {
+    color: var(--black);
+}
+
+.envelope > img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.envelope-buddy p {
+    width: 700px;
+    height: 400px;
+    font-size: 1.5rem;
 }
 
 .stock {
@@ -115,7 +195,13 @@ img.polaroid.left-tilt {
 }
 
 .stock.stock-paper::before {
-    filter: saturate(0) contrast(0.5) brightness(2.4) url(#rough-edges);
+    filter: grayscale() contrast(0.95) brightness(4.7) url(#rough-edges);
+}
+
+.stock > ul {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    margin: 0 0 0 2rem;
 }
 
 .stock.stock-paper {
