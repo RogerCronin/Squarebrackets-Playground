@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When does class end</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div id="middle">
+        <h1 id="in-class">Roger's class ends in <span id="in-class-time">_</span></h1>
+        <h1 id="out-of-class">Roger has class in <span id="out-of-class-time">_</span></h1>
+    </div>
+</body>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    #middle {
+        font-family: sans-serif;
+        text-align: center;
+    }
+
+    #middle h1 {
+        display: none;
+        font-size: 4vw;
+    }
+</style>
+<script defer>
+    const lastClass = new Date();
+    lastClass.setMonth(4);
+    lastClass.setDate(15);
+    lastClass.setHours(15);
+    lastClass.setMinutes(40);
+    lastClass.setSeconds(0);
+
+    console.log(lastClass);
+
+    const inClassHeader = document.getElementById("in-class");
+    const inClassSpan = document.getElementById("in-class-time")
+    const outOfClassHeader = document.getElementById("out-of-class");
+    const outOfClassSpan = document.getElementById("out-of-class-time");
+
+    const classes = [
+        [],
+        [
+            {start: 1130, end: 1225},
+            {start: 1350, end: 1445},
+            {start: 1500, end: 1555},
+            {start: 1720, end: 1815}
+        ],
+        [
+            {start: 1420, end: 1540},
+            {start: 1730, end: 1825}
+        ],
+        [
+            {start: 1130, end: 1225},
+            {start: 1350, end: 1445},
+            {start: 1500, end: 1555},
+            {start: 1720, end: 1815}
+        ],
+        [
+            {start: 1420, end: 1540}
+        ],
+        [
+            {start: 1130, end: 1225},
+            {start: 1350, end: 1445},
+            {start: 1500, end: 1555}
+        ],
+        []
+    ];
+    classes.push(classes[1]);
+
+    function tick() {
+        const now = new Date();
+
+        if(lastClass.getTime() - now.getTime() <= 0) {
+            inClassHeader.style.display = "block";
+            inClassHeader.innerHTML = "Roger is done with classes!"
+            return;
+        }
+
+        const dayOfTheWeek = now.getDay();
+        const classesToday = classes[dayOfTheWeek];
+        let integerTime = now.getHours() * 100 + now.getMinutes();
+
+        let classEndTime;
+        for(i = 0; i < classesToday.length; i++) {
+            const classTimes = classesToday[i];
+            if(integerTime >= classTimes.start && integerTime < classTimes.end) {
+                classEndTime = classTimes.end;
+                break;
+            }
+        }
+        
+        const inClass = !!classEndTime;
+        
+        if(inClass) {
+            inClassHeader.style.display = "block";
+            outOfClassHeader.style.display = "none";
+
+            const endOfClass = new Date(now);
+            endOfClass.setHours(Math.floor(classEndTime / 100))
+            endOfClass.setMinutes(classEndTime % 100)
+            endOfClass.setSeconds(0);
+
+            const secondsUntilEndOfClass = (endOfClass.getTime() - now.getTime()) / 1000;
+            const day = String(Math.floor(secondsUntilEndOfClass / (3600 * 24)) + 1000).substring(2);
+            const hour = String(Math.floor(secondsUntilEndOfClass % (3600 * 24) / 3600) + 1000).substring(2);
+            const minute = String(Math.floor(secondsUntilEndOfClass % 3600 / 60) + 1000).substring(2);
+            const second = String(Math.floor(secondsUntilEndOfClass % 60) + 1000).substring(2);
+
+            inClassSpan.innerHTML = `${day}:${hour}:${minute}:${second}`;
+        } else {
+            inClassHeader.style.display = "none";
+            outOfClassHeader.style.display = "block";
+
+            let nextClassTimes;
+            for(let i = dayOfTheWeek; i < 8; i++) {
+                const classesForDay = classes[i];
+                for(let j = 0; j < classesForDay.length; j++) {
+                    if(integerTime <= classesForDay[j].start) {
+                        nextClassTimes = classesForDay[j];
+                        break;
+                    }
+                }
+                integerTime = 0;
+            }
+
+            const startOfClass = new Date(now);
+            if(integerTime === 0) {
+                if(dayOfTheWeek === 5) startOfClass.setDate(startOfClass.getDate() + 3);
+                else if(dayOfTheWeek === 6) startOfClass.setDate(startOfClass.getDate() + 2);
+                else if(dayOfTheWeek === 0) startOfClass.setDate(startOfClass.getDate() + 1)
+            }
+            startOfClass.setHours(Math.floor(nextClassTimes.start / 100))
+            startOfClass.setMinutes(nextClassTimes.start % 100)
+            startOfClass.setSeconds(0);
+
+            const secondsUntilStartOfClass = (startOfClass.getTime() - now.getTime()) / 1000;
+            const day = String(Math.floor(secondsUntilStartOfClass / (3600 * 24))  + 1000).substring(2);
+            const hour = String(Math.floor(secondsUntilStartOfClass % (3600 * 24) / 3600) + 1000).substring(2);
+            const minute = String(Math.floor(secondsUntilStartOfClass % 3600 / 60) + 1000).substring(2);
+            const second = String(Math.floor(secondsUntilStartOfClass % 60) + 1000).substring(2);
+
+            outOfClassSpan.innerHTML = `${day}:${hour}:${minute}:${second}`;
+        }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+</script>
