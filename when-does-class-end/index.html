@@ -136,7 +136,7 @@
             if(integerTime === 0) {
                 if(dayOfTheWeek === 5) startOfClass.setDate(startOfClass.getDate() + 3);
                 else if(dayOfTheWeek === 6) startOfClass.setDate(startOfClass.getDate() + 2);
-                else if(dayOfTheWeek === 0) startOfClass.setDate(startOfClass.getDate() + 1)
+                else startOfClass.setDate(startOfClass.getDate() + 1);
             }
             startOfClass.setHours(Math.floor(nextClassTimes.start / 100))
             startOfClass.setMinutes(nextClassTimes.start % 100)
