@@ -65,6 +65,7 @@
             {start: 1720, end: 1815}
         ],
         [
+            {start: 1110, end: 1205},
             {start: 1420, end: 1540}
         ],
         [
@@ -121,12 +122,12 @@
             outOfClassHeader.style.display = "block";
 
             let nextClassTimes;
-            for(let i = dayOfTheWeek; i < 8; i++) {
+            outer: for(let i = dayOfTheWeek; i < 8; i++) {
                 const classesForDay = classes[i];
                 for(let j = 0; j < classesForDay.length; j++) {
                     if(integerTime <= classesForDay[j].start) {
                         nextClassTimes = classesForDay[j];
-                        break;
+                        break outer;
                     }
                 }
                 integerTime = 0;
