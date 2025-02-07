@@ -39,8 +39,6 @@
     lastClass.setMinutes(40);
     lastClass.setSeconds(0);
 
-    console.log(lastClass);
-
     const inClassHeader = document.getElementById("in-class");
     const inClassSpan = document.getElementById("in-class-time")
     const outOfClassHeader = document.getElementById("out-of-class");
@@ -154,5 +152,5 @@
     }
 
     tick();
-    setInterval(tick, 1000);
+    setInterval(tick, 10);
 </script>
