@@ -47,9 +47,12 @@
             }
         </style>
         <script>
-            function notify() {
+            navigator.serviceWorker.register("sw.js");
+
+            async function notify() {
                 const input = document.getElementById("input");
-                new Notification("Notifier", { body: input.value });
+                const registration = await navigator.serviceWorker.ready;
+                registration.showNotification(input.value);
                 input.value = "";
             }
 
