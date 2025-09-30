@@ -33,10 +33,10 @@
 </style>
 <script defer>
     const lastClass = new Date();
-    lastClass.setMonth(4);
-    lastClass.setDate(15);
-    lastClass.setHours(15);
-    lastClass.setMinutes(40);
+    lastClass.setMonth(12);
+    lastClass.setDate(9);
+    lastClass.setHours(17);
+    lastClass.setMinutes(0);
     lastClass.setSeconds(0);
 
     const inClassHeader = document.getElementById("in-class");
@@ -45,34 +45,32 @@
     const outOfClassSpan = document.getElementById("out-of-class-time");
 
     const classes = [
-        [],
-        [
+        [], // sunday
+        [ // monday
             {start: 1020, end: 1115},
-            {start: 1130, end: 1225},
-            {start: 1500, end: 1555},
-            {start: 1720, end: 1815}
+            {start: 1545, end: 1830},
         ],
-        [
+        [ // tuesday
+            {start: 800, end: 920},
             {start: 935, end: 1055},
             {start: 1420, end: 1540},
-            {start: 1730, end: 1825}
+            {start: 1545, end: 1700},
         ],
-        [
+        [ // wednesday
             {start: 1020, end: 1115},
             {start: 1130, end: 1225},
-            {start: 1500, end: 1555},
-            {start: 1720, end: 1815}
+            {start: 1350, end: 1445},
+            {start: 1545, end: 1830},
         ],
-        [
+        [ // thursday
+            {start: 800, end: 920},
             {start: 935, end: 1055},
-            {start: 1420, end: 1540}
+            {start: 1545, end: 1700},
         ],
-        [
-            {start: 1020, end: 1115},
-            {start: 1130, end: 1225},
-            {start: 1500, end: 1555},
+        [ // friday
+            {start: 1545, end: 1830},
         ],
-        []
+        [], // saturday
     ];
     classes.push(classes[1]);
 
